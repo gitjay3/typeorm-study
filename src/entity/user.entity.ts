@@ -1,9 +1,26 @@
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn,
+    VersionColumn,
+} from 'typeorm';
+
+@Entity()
 export class UserModel {
-  id: number;
+    @PrimaryGeneratedColumn('uuid')
+    id: number;
 
-  title: string;
+    @Column()
+    title: string;
 
-  createdAt: Date;
+    @CreateDateColumn()
+    createdAt: Date;
 
-  updatedAt: Date;
+    @UpdateDateColumn()
+    updatedAt: Date;
+
+    @VersionColumn()
+    version: number;
 }
