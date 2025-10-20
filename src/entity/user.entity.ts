@@ -2,10 +2,12 @@ import {
     Column,
     CreateDateColumn,
     Entity,
+    OneToOne,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
     VersionColumn,
 } from 'typeorm';
+import { ProfileModel } from './profile.entity';
 
 export enum Role {
     USER = 'user',
@@ -40,4 +42,7 @@ export class UserModel {
 
     @VersionColumn()
     version: number;
+
+    @OneToOne(() => ProfileModel, (profile) => profile.user)
+    profile: ProfileModel;
 }
